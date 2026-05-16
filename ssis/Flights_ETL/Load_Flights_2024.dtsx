@@ -1,0 +1,2364 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/16/2025 4:42:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LORD2MARIO"
+  DTS:CreatorName="LORD2MARIO\Mario"
+  DTS:DTSID="{499D51CF-1ACC-40FA-9575-26D4B22A4979}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Flights_2024"
+  DTS:PackageType="5"
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{58A58085-9A41-4891-985E-5F2A7ABF2172}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_FlatFile_Flights]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5D6E2C1D-5E11-4BF0-957E-CF45883A9572}"
+      DTS:ObjectName="CM_FlatFile_Flights">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FolderPath] + @[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Mario\python projects\fabric project\raw csv\">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YEAR"
+              DTS:DTSID="{1F5BB35F-EB15-432A-B61D-CD78045B57BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MONTH"
+              DTS:DTSID="{122E2D44-B545-4877-9532-50142B42005F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FL_DATE"
+              DTS:DTSID="{CB7F3460-6B13-4A1B-B995-42215D7D041B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OP_UNIQUE_CARRIER"
+              DTS:DTSID="{EAEA841E-CC15-4B2F-983B-5AD7D92BACDC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORIGIN_AIRPORT_ID"
+              DTS:DTSID="{B15ADF18-92A7-451D-90EA-8C2211E2A6CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORIGIN"
+              DTS:DTSID="{7F59DDDB-FE04-40CF-98C1-13C2E655522B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORIGIN_CITY_NAME"
+              DTS:DTSID="{0C70A54F-A675-4DB3-8D99-66FB5C88B869}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DEST_AIRPORT_ID"
+              DTS:DTSID="{ED84BDF8-24D6-431D-AD62-6CF4EF05C437}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DEST"
+              DTS:DTSID="{157B24D0-E88D-4CEA-A280-C5BE41917D96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DEST_CITY_NAME"
+              DTS:DTSID="{3C7E3D18-9399-4C16-BE0D-2A133C66039E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DEP_TIME"
+              DTS:DTSID="{D2A541E2-1F3B-4017-BB62-ECED188EAD40}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DEP_DELAY"
+              DTS:DTSID="{1F1343D6-C18E-453E-846A-95F746979DE3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ARR_TIME"
+              DTS:DTSID="{30506F4F-BC8B-42EF-AF2D-AE608009A3CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ARR_DELAY"
+              DTS:DTSID="{476686B9-80D0-4AB7-9B4A-3F3822D70F51}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CANCELLED"
+              DTS:DTSID="{D15E2E5F-A4A9-4418-BD9C-2C697EAD3665}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CANCELLATION_CODE"
+              DTS:DTSID="{F8CD173D-3D22-4701-B259-26B23E6612DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DIVERTED"
+              DTS:DTSID="{F5E01F0A-BA4D-43FF-B970-879C64B93383}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DISTANCE"
+              DTS:DTSID="{EE6CD5ED-BE2F-46E1-B5D8-202CB2181805}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_OLEDB_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{86A0F5DE-E03A-4B50-90AC-16C81147C282}"
+      DTS:ObjectName="CM_OLEDB_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;User ID=;Initial Catalog=FlightData_Staging;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Auto Translate=False;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Load_Flights_2024-{86A0F5DE-E03A-4B50-90AC-16C81147C282}localhost;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{155B7BD6-0A81-4A22-A14F-4C5C2FBB019A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{02F33B0D-020E-4135-8506-45B1FC90639E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Mario\python projects\fabric project\raw csv\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{25184CC5-B39E-47EB-B1C1-FBA561480935}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullPath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{FBF6775C-E5AA-4F9B-92DD-8114723DB777}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{5D56BC0C-EAA3-4CC9-A7AF-5CB1E03B1577}"
+        DTS:ObjectName="{5D56BC0C-EAA3-4CC9-A7AF-5CB1E03B1577}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\Mario\python projects\fabric project\raw csv" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{4A25F5D6-EED1-4CCA-8914-63409B5F7CE6}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="Variable">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\DF_Load_Flights"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{FE9B1DA6-9598-44E2-B817-34733129CACF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF_Load_Flights"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[CarrierCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CarrierCode_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CarrierCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[OriginCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="OriginCode_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[OriginCity_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="OriginCity_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCity_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DestCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DestCode_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DestCity_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DestCity_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCity_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[CancellationCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CancellationCode_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CancellationCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[Cancelled_t]"
+                          cachedDataType="bool"
+                          cachedName="Cancelled_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Cancelled_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[Diverted_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Diverted_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Diverted_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[Year_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Year_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Year_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[Month_t]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Month_t"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Month_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[OriginAirportID_clean]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="OriginAirportID_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginAirportID_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DEST_AIRPORT_ID]"
+                          cachedDataType="i4"
+                          cachedName="DEST_AIRPORT_ID"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_AIRPORT_ID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DepTime_clean]"
+                          cachedDataType="i4"
+                          cachedName="DepTime_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepTime_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DepDelay_clean]"
+                          cachedDataType="i4"
+                          cachedName="DepDelay_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepDelay_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[ArrTime_clean]"
+                          cachedDataType="i4"
+                          cachedName="ArrTime_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrTime_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[ArrDelay_clean]"
+                          cachedDataType="i4"
+                          cachedName="ArrDelay_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrDelay_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[DISTANCE]"
+                          cachedDataType="i4"
+                          cachedName="DISTANCE"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input].Columns[FlightDate_clean]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FlightDate_clean"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[FlightDate_clean]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrDelay_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrDelay_clean]"
+                          name="Copy of ArrDelay_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrDelay_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrTime_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrTime_clean]"
+                          name="Copy of ArrTime_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrTime_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CancellationCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CancellationCode_t]"
+                          name="Copy of CancellationCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CancellationCode_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cancelled_t]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cancelled_t]"
+                          name="Copy of Cancelled_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Cancelled_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CarrierCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CarrierCode_t]"
+                          name="Copy of CarrierCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CarrierCode_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepDelay_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepDelay_clean]"
+                          name="Copy of DepDelay_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepDelay_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepTime_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepTime_clean]"
+                          name="Copy of DepTime_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepTime_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestAirportID_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestAirportID_clean]"
+                          name="Copy of DestAirportID_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_AIRPORT_ID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCity_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCity_t]"
+                          name="Copy of DestCity_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCity_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCode_t]"
+                          name="Copy of DestCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCode_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distance_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distance_clean]"
+                          name="Copy of Distance_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Diverted_t]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Diverted_t]"
+                          name="Copy of Diverted_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Diverted_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FlightDate_clean]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FlightDate_clean]"
+                          name="Copy of FlightDate_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[FlightDate_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_t]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_t]"
+                          name="Copy of Month_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Month_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginAirportID_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginAirportID_clean]"
+                          name="Copy of OriginAirportID_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginAirportID_clean]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCity_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCity_t]"
+                          name="Copy of OriginCity_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCity_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCode_t]"
+                          name="Copy of OriginCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCode_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year_t]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year_t]"
+                          name="Copy of Year_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Year_t]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[YEAR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="YEAR"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[YEAR]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[MONTH]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="MONTH"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[MONTH]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[FL_DATE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FL_DATE"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[OP_UNIQUE_CARRIER]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="OP_UNIQUE_CARRIER"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[OP_UNIQUE_CARRIER]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[ORIGIN_AIRPORT_ID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ORIGIN_AIRPORT_ID"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_AIRPORT_ID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[ORIGIN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ORIGIN"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[ORIGIN_CITY_NAME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ORIGIN_CITY_NAME"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_CITY_NAME]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[DEST]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DEST"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[DEST_CITY_NAME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DEST_CITY_NAME"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_CITY_NAME]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[DEP_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DEP_TIME"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[DEP_DELAY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DEP_DELAY"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[ARR_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ARR_TIME"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[ARR_DELAY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ARR_DELAY"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[CANCELLED]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CANCELLED"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[CANCELLATION_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CANCELLATION_CODE"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input].Columns[DIVERTED]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DIVERTED"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CarrierCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CarrierCode_t]"
+                          name="CarrierCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[OP_UNIQUE_CARRIER]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(OP_UNIQUE_CARRIER)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCode_t]"
+                          name="OriginCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(ORIGIN)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCity_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginCity_t]"
+                          name="OriginCity_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_CITY_NAME]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(ORIGIN_CITY_NAME)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCode_t]"
+                          name="DestCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(DEST)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCity_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DestCity_t]"
+                          name="DestCity_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_CITY_NAME]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(DEST_CITY_NAME)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CancellationCode_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[CancellationCode_t]"
+                          name="CancellationCode_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(CANCELLATION_CODE)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Cancelled_t]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Cancelled_t]"
+                          name="Cancelled_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">([SUBSTRING]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]}),1,1) == "1" ?  TRUE  :  FALSE )</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(SUBSTRING(TRIM(CANCELLED),1,1) == "1" ?  TRUE  :  FALSE )</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Diverted_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Diverted_t]"
+                          name="Diverted_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(DIVERTED)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Year_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Year_t]"
+                          name="Year_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[YEAR]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(YEAR)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Month_t]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[Month_t]"
+                          name="Month_t"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[MONTH]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(MONTH)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginAirportID_clean]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[OriginAirportID_clean]"
+                          name="OriginAirportID_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_AIRPORT_ID]}) == "" ? (DT_STR,20,1252)NULL(DT_STR,20,1252) : [TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_AIRPORT_ID]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(ORIGIN_AIRPORT_ID) == "" ? (DT_STR,20,1252)NULL(DT_STR,20,1252) : TRIM(ORIGIN_AIRPORT_ID)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepTime_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepTime_clean]"
+                          name="DepTime_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]}) == "" ? NULL(DT_I4) : (DT_I4)(DT_R8)[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(DEP_TIME) == "" ? NULL(DT_I4) : (DT_I4)(DT_R8)TRIM(DEP_TIME)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepDelay_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[DepDelay_clean]"
+                          name="DepDelay_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">([ISNULL](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]}) || [TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]}) == "" || [UPPER]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]})) == "NA" || [LEN]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([REPLACE]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]}),"0",""),"1",""),"2",""),"3",""),"4",""),"5",""),"6",""),"7",""),"8",""),"9",""),"+",""),"-",""),".","")) &gt; 0) ? NULL(DT_I4) : (DT_I4)(DT_R8)[REPLACE]([REPLACE]([REPLACE]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]}),",",""),"+","")," ","")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(ISNULL(DEP_DELAY) || TRIM(DEP_DELAY) == "" || UPPER(TRIM(DEP_DELAY)) == "NA" || LEN(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(TRIM(DEP_DELAY),"0",""),"1",""),"2",""),"3",""),"4",""),"5",""),"6",""),"7",""),"8",""),"9",""),"+",""),"-",""),".","")) &gt; 0) ? NULL(DT_I4) : (DT_I4)(DT_R8)REPLACE(REPLACE(REPLACE(TRIM(DEP_DELAY),",",""),"+","")," ","")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrTime_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrTime_clean]"
+                          name="ArrTime_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">([SUBSTRING]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]}),1,1) == "1") ? NULL(DT_I4) : ([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]}) == "" ? NULL(DT_I4) : (DT_I4)(DT_R8)[REPLACE]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]}),":",""))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(SUBSTRING(TRIM(CANCELLED),1,1) == "1") ? NULL(DT_I4) : (TRIM(ARR_TIME) == "" ? NULL(DT_I4) : (DT_I4)(DT_R8)REPLACE(TRIM(ARR_TIME),":",""))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrDelay_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[ArrDelay_clean]"
+                          name="ArrDelay_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">([SUBSTRING]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]}),1,1) == "1") ? NULL(DT_I4) : (([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]}) == "" || [UPPER]([TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]})) == "NA") ? NULL(DT_I4) : (DT_I4)(DT_R8)[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]}))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(SUBSTRING(TRIM(CANCELLED),1,1) == "1") ? NULL(DT_I4) : ((TRIM(ARR_DELAY) == "" || UPPER(TRIM(ARR_DELAY)) == "NA") ? NULL(DT_I4) : (DT_I4)(DT_R8)TRIM(ARR_DELAY))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[FlightDate_clean]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output].Columns[FlightDate_clean]"
+                          name="FlightDate_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]}) == "" ? (DT_STR,20,1252)NULL(DT_STR,20,1252) : [TRIM](#{Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(FL_DATE) == "" ? (DT_STR,20,1252)NULL(DT_STR,20,1252) : TRIM(FL_DATE)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[CM_FlatFile_Flights]"
+                      connectionManagerRefId="Package.ConnectionManagers[CM_FlatFile_Flights]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[YEAR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[YEAR]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[YEAR]"
+                          name="YEAR"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[MONTH]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MONTH]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[MONTH]"
+                          name="MONTH"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FL_DATE]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]"
+                          name="FL_DATE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[OP_UNIQUE_CARRIER]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OP_UNIQUE_CARRIER]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[OP_UNIQUE_CARRIER]"
+                          name="OP_UNIQUE_CARRIER"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_AIRPORT_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN_AIRPORT_ID]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_AIRPORT_ID]"
+                          name="ORIGIN_AIRPORT_ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]"
+                          name="ORIGIN"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_CITY_NAME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN_CITY_NAME]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN_CITY_NAME]"
+                          name="ORIGIN_CITY_NAME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_AIRPORT_ID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST_AIRPORT_ID]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_AIRPORT_ID]"
+                          name="DEST_AIRPORT_ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]"
+                          name="DEST"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_CITY_NAME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST_CITY_NAME]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEST_CITY_NAME]"
+                          name="DEST_CITY_NAME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEP_TIME]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]"
+                          name="DEP_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEP_DELAY]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]"
+                          name="DEP_DELAY"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ARR_TIME]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]"
+                          name="ARR_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ARR_DELAY]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]"
+                          name="ARR_DELAY"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CANCELLED]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]"
+                          name="CANCELLED"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CANCELLATION_CODE]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]"
+                          name="CANCELLATION_CODE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DIVERTED]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]"
+                          name="DIVERTED"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DISTANCE]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]"
+                          name="DISTANCE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[YEAR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="YEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MONTH]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MONTH" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FL_DATE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FL_DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OP_UNIQUE_CARRIER]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OP_UNIQUE_CARRIER" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN_AIRPORT_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ORIGIN_AIRPORT_ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ORIGIN" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ORIGIN_CITY_NAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ORIGIN_CITY_NAME" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST_AIRPORT_ID]"
+                          dataType="i4"
+                          name="DEST_AIRPORT_ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DEST" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEST_CITY_NAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DEST_CITY_NAME" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEP_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DEP_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DEP_DELAY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DEP_DELAY" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ARR_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ARR_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ARR_DELAY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ARR_DELAY" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CANCELLED]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CANCELLED" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CANCELLATION_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CANCELLATION_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DIVERTED]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DIVERTED" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DISTANCE]"
+                          dataType="i4"
+                          name="DISTANCE" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Flights_2024]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[CM_OLEDB_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[CM_OLEDB_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Year_t]"
+                          cachedDataType="i4"
+                          cachedName="Copy of Year_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Month_t]"
+                          cachedDataType="i4"
+                          cachedName="Copy of Month_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of FlightDate_clean]"
+                          cachedDataType="dbDate"
+                          cachedName="Copy of FlightDate_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightDate]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FlightDate_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of CarrierCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of CarrierCode_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CarrierCode]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CarrierCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of OriginAirportID_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of OriginAirportID_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginAirportID]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginAirportID_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of OriginCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of OriginCode_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginCode]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of OriginCity_t]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Copy of OriginCity_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginCity]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of OriginCity_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DestAirportID_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of DestAirportID_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestAirportID]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestAirportID_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DestCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of DestCode_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestCode]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DestCity_t]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Copy of DestCity_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestCity]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DestCity_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DepTime_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of DepTime_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepTime]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepTime_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DepDelay_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of DepDelay_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepDelay]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DepDelay_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ArrDelay_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of ArrDelay_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrDelay]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrDelay_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ArrTime_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of ArrTime_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrTime]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ArrTime_clean]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Cancelled_t]"
+                          cachedDataType="bool"
+                          cachedName="Copy of Cancelled_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cancelled_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of CancellationCode_t]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of CancellationCode_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CancellationCode]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CancellationCode_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Diverted_t]"
+                          cachedDataType="bool"
+                          cachedName="Copy of Diverted_t"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diverted]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Diverted_t]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Distance_clean]"
+                          cachedDataType="i4"
+                          cachedName="Copy of Distance_clean"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distance]"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distance_clean]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i4"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          dataType="i4"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightDate]"
+                          dataType="dbDate"
+                          name="FlightDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CarrierCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="CarrierCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginAirportID]"
+                          dataType="i4"
+                          name="OriginAirportID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="OriginCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginCity]"
+                          dataType="wstr"
+                          length="100"
+                          name="OriginCity" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestAirportID]"
+                          dataType="i4"
+                          name="DestAirportID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="DestCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DestCity]"
+                          dataType="wstr"
+                          length="100"
+                          name="DestCity" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepTime]"
+                          dataType="i4"
+                          name="DepTime" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepDelay]"
+                          dataType="i4"
+                          name="DepDelay" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrTime]"
+                          dataType="i4"
+                          name="ArrTime" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrDelay]"
+                          dataType="i4"
+                          name="ArrDelay" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
+                          dataType="bool"
+                          name="Cancelled" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CancellationCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="CancellationCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diverted]"
+                          dataType="bool"
+                          name="Diverted" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distance]"
+                          dataType="i4"
+                          name="Distance" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightID]"
+                          dataType="i8"
+                          name="FlightID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\DF_Load_Flights.Paths[Data Conversion Output]"
+                  endId="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\DF_Load_Flights.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\DF_Load_Flights.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\DF_Load_Flights\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{54370DE3-096B-437A-BDBE-F506E251C3E5}"
+          DTS:ObjectName="{54370DE3-096B-437A-BDBE-F506E251C3E5}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Foreach Loop Container\DF_Load_Flights"
+          TopLeft="84.0571431825356,17.3294115924403" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="244.8,113.6"
+          Size="244.8,156.8"
+          Id="Package\Foreach Loop Container"
+          TopLeft="69.0714287067555,136.264705767733" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\DF_Load_Flights">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Foreach Loop Container\DF_Load_Flights\Flat File Source"
+          TopLeft="15.4999998509884,3.27777781089147" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Foreach Loop Container\DF_Load_Flights\Derived Column"
+          TopLeft="20.0000000425747,90.8705881682647" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Foreach Loop Container\DF_Load_Flights\Data Conversion"
+          TopLeft="12.1428571687061,176.164705733548" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination"
+          TopLeft="11.4285714528998,261.529411535465" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DF_Load_Flights.Paths[Flat File Source Output]"
+          TopLeft="93.5499999467816,44.8777778108915">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.9928103573732"
+              Start="0,0"
+              End="0,38.4928103573732">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.4928103573732" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DF_Load_Flights.Paths[Derived Column Output]"
+          TopLeft="93.0714286056404,132.470588168265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.6941175652829"
+              Start="0,0"
+              End="0,36.1941175652829">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.1941175652829" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DF_Load_Flights.Paths[Data Conversion Output]"
+          TopLeft="93.185714310803,217.764705733548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.7647058019176"
+              Start="0,0"
+              End="0,36.2647058019176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.2647058019176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\DF_Load_Flights\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

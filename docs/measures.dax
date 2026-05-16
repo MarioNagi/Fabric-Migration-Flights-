@@ -1,0 +1,40 @@
+// Shared DAX measures — used by both SSAS Tabular (Model.bim) and the Fabric
+// semantic model. Keeping these in one file means the on-prem and Fabric
+// backends produce identical numbers.
+
+Total Flights = COUNTROWS(FactFlight)
+
+Cancelled Flights =
+CALCULATE(COUNTROWS(FactFlight), FactFlight[Cancelled] = TRUE())
+
+Cancelled % =
+DIVIDE([Cancelled Flights], [Total Flights])
+
+On-Time Flights =
+CALCULATE(COUNTROWS(FactFlight), FactFlight[IsOnTime] = TRUE())
+
+On-Time % =
+DIVIDE([On-Time Flights], [Total Flights])
+
+Avg Dep Delay = AVERAGE(FactFlight[DepDelayMin])
+Avg Arr Delay = AVERAGE(FactFlight[ArrDelayMin])
+
+Total Distance = SUM(FactFlight[DistanceMiles])
+Avg Distance   = AVERAGE(FactFlight[DistanceMiles])
+
+Flights YoY % =
+VAR cur  = [Total Flights]
+VAR prev = CALCULATE([Total Flights], SAMEPERIODLASTYEAR(DimDate[DateValue]))
+RETURN DIVIDE(cur - prev, prev)
+
+Flights MoM % =
+VAR cur  = [Total Flights]
+VAR prev = CALCULATE([Total Flights],
+              DATEADD(DimDate[DateValue], -1, MONTH))
+RETURN DIVIDE(cur - prev, prev)
+
+// KPI: green ≥ 80%, yellow ≥ 70%, red below
+On-Time KPI Status =
+VAR x = [On-Time %]
+RETURN
+    IF(x >= 0.80, 1, IF(x >= 0.70, 0, -1))

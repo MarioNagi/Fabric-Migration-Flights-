@@ -1,0 +1,189 @@
+{
+  "name": "FlightAnalytics",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "FlightData_Curated_v2",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "localhost",
+            "database": "FlightData_Curated_v2"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "Windows",
+          "EncryptConnection": false,
+          "PrivacySetting": "Organizational"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimDate",
+        "dataCategory": "Time",
+        "columns": [
+          { "name": "DateKey", "dataType": "int64", "sourceColumn": "DateKey", "isKey": true },
+          { "name": "DateValue", "dataType": "dateTime", "sourceColumn": "DateValue", "isDataTypeInferred": false },
+          { "name": "Year", "dataType": "int64", "sourceColumn": "Year" },
+          { "name": "Quarter", "dataType": "int64", "sourceColumn": "Quarter" },
+          { "name": "Month", "dataType": "int64", "sourceColumn": "Month" },
+          { "name": "MonthName", "dataType": "string", "sourceColumn": "MonthName" },
+          { "name": "Day", "dataType": "int64", "sourceColumn": "Day" },
+          { "name": "DayName", "dataType": "string", "sourceColumn": "DayName" },
+          { "name": "IsWeekend", "dataType": "boolean", "sourceColumn": "IsWeekend" },
+          { "name": "IsHoliday", "dataType": "boolean", "sourceColumn": "IsHoliday" }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "source": {
+              "type": "m",
+              "expression": "let Source = Sql.Database(\"localhost\", \"FlightData_Curated_v2\"), dim = Source{[Schema=\"dim\", Item=\"DimDate\"]}[Data] in dim"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar",
+            "levels": [
+              { "name": "Year", "ordinal": 0, "column": "Year" },
+              { "name": "Quarter", "ordinal": 1, "column": "Quarter" },
+              { "name": "Month", "ordinal": 2, "column": "MonthName" },
+              { "name": "Day", "ordinal": 3, "column": "Day" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "DimCarrier",
+        "columns": [
+          { "name": "CarrierHK", "dataType": "binary", "sourceColumn": "CarrierHK", "isKey": true, "isHidden": true },
+          { "name": "CarrierCode", "dataType": "string", "sourceColumn": "CarrierCode" },
+          { "name": "CarrierName", "dataType": "string", "sourceColumn": "CarrierName" },
+          { "name": "CarrierType", "dataType": "string", "sourceColumn": "CarrierType" },
+          { "name": "Country", "dataType": "string", "sourceColumn": "Country" },
+          { "name": "IsCurrent", "dataType": "boolean", "sourceColumn": "IsCurrent", "isHidden": true }
+        ],
+        "partitions": [
+          {
+            "name": "DimCarrier",
+            "source": {
+              "type": "m",
+              "expression": "let Source = Sql.Database(\"localhost\", \"FlightData_Curated_v2\"), dim = Source{[Schema=\"dim\", Item=\"DimCarrier\"]}[Data], current = Table.SelectRows(dim, each [IsCurrent] = true) in current"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimAirport",
+        "columns": [
+          { "name": "AirportHK", "dataType": "binary", "sourceColumn": "AirportHK", "isKey": true, "isHidden": true },
+          { "name": "AirportCode", "dataType": "string", "sourceColumn": "AirportCode" },
+          { "name": "AirportName", "dataType": "string", "sourceColumn": "AirportName" },
+          { "name": "CityName", "dataType": "string", "sourceColumn": "CityName" },
+          { "name": "State", "dataType": "string", "sourceColumn": "State" },
+          { "name": "Country", "dataType": "string", "sourceColumn": "Country" },
+          { "name": "Latitude", "dataType": "decimal", "sourceColumn": "Latitude" },
+          { "name": "Longitude", "dataType": "decimal", "sourceColumn": "Longitude" },
+          { "name": "IsHub", "dataType": "boolean", "sourceColumn": "IsHub" }
+        ],
+        "partitions": [
+          {
+            "name": "DimAirport",
+            "source": {
+              "type": "m",
+              "expression": "let Source = Sql.Database(\"localhost\", \"FlightData_Curated_v2\"), dim = Source{[Schema=\"dim\", Item=\"DimAirport\"]}[Data] in dim"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Geography",
+            "levels": [
+              { "name": "Country", "ordinal": 0, "column": "Country" },
+              { "name": "State", "ordinal": 1, "column": "State" },
+              { "name": "Airport", "ordinal": 2, "column": "AirportName" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "FactFlight",
+        "columns": [
+          { "name": "FlightHK", "dataType": "binary", "sourceColumn": "FlightHK", "isHidden": true },
+          { "name": "DateKey", "dataType": "int64", "sourceColumn": "DateKey", "isHidden": true },
+          { "name": "CarrierHK", "dataType": "binary", "sourceColumn": "CarrierHK", "isHidden": true },
+          { "name": "OriginHK", "dataType": "binary", "sourceColumn": "OriginHK", "isHidden": true },
+          { "name": "DestHK", "dataType": "binary", "sourceColumn": "DestHK", "isHidden": true },
+          { "name": "DepDelayMin", "dataType": "int64", "sourceColumn": "DepDelayMin" },
+          { "name": "ArrDelayMin", "dataType": "int64", "sourceColumn": "ArrDelayMin" },
+          { "name": "Cancelled", "dataType": "boolean", "sourceColumn": "Cancelled" },
+          { "name": "Diverted", "dataType": "boolean", "sourceColumn": "Diverted" },
+          { "name": "DistanceMiles", "dataType": "int64", "sourceColumn": "DistanceMiles" },
+          { "name": "IsOnTime", "dataType": "boolean", "sourceColumn": "IsOnTime" }
+        ],
+        "partitions": [
+          {
+            "name": "FactFlight_2024",
+            "source": {
+              "type": "m",
+              "expression": "let Source = Sql.Database(\"localhost\", \"FlightData_Curated_v2\"), fact = Source{[Schema=\"fact\", Item=\"FactFlight\"]}[Data] in fact"
+            }
+          }
+        ],
+        "measures": [
+          { "name": "Total Flights",     "expression": "COUNTROWS(FactFlight)" },
+          { "name": "Cancelled Flights", "expression": "CALCULATE(COUNTROWS(FactFlight), FactFlight[Cancelled] = TRUE())" },
+          { "name": "Cancelled %",       "expression": "DIVIDE([Cancelled Flights], [Total Flights])", "formatString": "0.0%" },
+          { "name": "Avg Dep Delay",     "expression": "AVERAGE(FactFlight[DepDelayMin])", "formatString": "0.0" },
+          { "name": "Avg Arr Delay",     "expression": "AVERAGE(FactFlight[ArrDelayMin])", "formatString": "0.0" },
+          { "name": "On-Time Flights",   "expression": "CALCULATE(COUNTROWS(FactFlight), FactFlight[IsOnTime] = TRUE())" },
+          { "name": "On-Time %",         "expression": "DIVIDE([On-Time Flights], [Total Flights])", "formatString": "0.0%" },
+          { "name": "Total Distance",    "expression": "SUM(FactFlight[DistanceMiles])", "formatString": "#,##0" },
+          { "name": "Avg Distance",      "expression": "AVERAGE(FactFlight[DistanceMiles])", "formatString": "0" },
+          {
+            "name": "Flights YoY %",
+            "expression": "VAR cur = [Total Flights] VAR prev = CALCULATE([Total Flights], SAMEPERIODLASTYEAR(DimDate[DateValue])) RETURN DIVIDE(cur - prev, prev)",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "On-Time KPI",
+            "expression": "[On-Time %]",
+            "kpi": {
+              "targetExpression": "0.80",
+              "statusExpression": "VAR x = [On-Time %] RETURN IF(x >= 0.80, 1, IF(x >= 0.70, 0, -1))"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      { "name": "Fact_Date",    "fromTable": "FactFlight", "fromColumn": "DateKey",   "toTable": "DimDate",    "toColumn": "DateKey" },
+      { "name": "Fact_Carrier", "fromTable": "FactFlight", "fromColumn": "CarrierHK", "toTable": "DimCarrier", "toColumn": "CarrierHK" },
+      { "name": "Fact_Origin",  "fromTable": "FactFlight", "fromColumn": "OriginHK",  "toTable": "DimAirport", "toColumn": "AirportHK" },
+      { "name": "Fact_Dest",    "fromTable": "FactFlight", "fromColumn": "DestHK",    "toTable": "DimAirport", "toColumn": "AirportHK", "isActive": false }
+    ],
+    "roles": [
+      {
+        "name": "EastCoastAnalysts",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DimAirport",
+            "filterExpression": "DimAirport[State] IN { \"NY\", \"NJ\", \"PA\", \"MA\", \"CT\", \"RI\", \"VT\", \"NH\", \"ME\" }"
+          }
+        ]
+      },
+      {
+        "name": "Analyst",
+        "modelPermission": "read"
+      }
+    ]
+  }
+}

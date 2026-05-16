@@ -1,0 +1,54 @@
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+*.pfx
+
+# Power BI ephemera
+*.pbix.lock
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Build artefacts
+bin/
+obj/
+*.dtsx.user
+*.dtproj.user
+*.smproj.user
+.vs/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local data (BTS public CSVs — too large for GitHub, re-download from source)
+data/raw_csv/**/*.csv
+!data/raw_csv/README.md
+
+# Test output
+TestResults/
+
+# Local-only planning, handoff, and personal artefacts (not part of the public repo)
+HANDOFF.md
+whole project.md
+docs/enhancement_plan.md
+Mario_Nagi_CV_2026.md
+Mario_Sorour_CV_2026.pdf
+Mario_Nagi_CV_2026.pdf
+
+# Claude Code session files
+.claude/
+
+# Git state inside subfolders that aren't real repos
+ssis/Flights_ETL/bin/
+ssis/Flights_ETL/obj/
