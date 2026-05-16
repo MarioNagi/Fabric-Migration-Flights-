@@ -1,7 +1,7 @@
 # Flight Data — On-Prem SQL Server → Microsoft Fabric Migration
 
 > **Reference implementation, public data.** This repository is the publishable
-> companion to the production Fabric migration I led at Koinonia Enterprises.
+> companion to the production Fabric migration I led.
 > The techniques (CDC, hash surrogate keys, medallion lakehouse, SSAS/Fabric
 > parallel) are the ones used in production; the data here is the **public BTS
 > on-time flight dataset** so the patterns can be shared without exposing
@@ -25,8 +25,7 @@ The migration hits two walls the on-prem version had hidden:
 
 This repository documents how both walls are solved and how a one-month
 SSAS / Fabric parallel run validates the migration is lossless before the
-on-prem stack is decommissioned — the same shape of work I shipped at
-Koinonia, rebuilt here on data anyone can re-download.
+on-prem stack is decommissioned — the same shape of work I shipped, rebuilt here on data anyone can re-download.
 
 ## Architecture
 
